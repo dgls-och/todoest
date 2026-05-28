@@ -1,0 +1,31 @@
+{
+  "name": "todoest",
+  "version": "1.0.0",
+  "description": "A simple to-do list app for organising daily tasks into projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgls-och/todoest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/dgls-och/todoest/issues"
+  },
+  "homepage": "https://github.com/dgls-och/todoest#readme",
+  "dependencies": {
+    "date-fns": "^4.3.0"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.4",
+    "html-webpack-plugin": "^5.6.7",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.3"
+  }
+}
