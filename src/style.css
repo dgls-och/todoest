@@ -3,3 +3,23 @@
   margin: 0;
   padding: 0;
 }
+
+html {
+  color: #2c2c3d;
+  background-color: #ededfe;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+}
+
+.wrapper {
+  border: 1px solid;
+  width: min(80vw, 800px);
+  margin: auto;
+  padding: 2rem 0;
+  font-size: 1.6rem;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1.6rem;
+}
