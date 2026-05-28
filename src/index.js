@@ -72,5 +72,48 @@ const todoDisplay = (function () {
     });
   };
 
-  return { printCategory };
+  const printTask = (categoryId) => {
+    const list = todoList.getList();
+    list.forEach((category) => {
+      if (category[0] === categoryId) {
+        const tasks = category.slice(1);
+        tasks.forEach((task) => {
+          const taskCard = document.createElement("div");
+          taskCard.classList.add("card");
+
+          const cardText = document.createElement("div");
+
+          const title = document.createElement("h3");
+          title.textContent = task.title;
+
+          const description = document.createElement("p");
+          description.textContent = task.description;
+
+          const priority = document.createElement("p");
+          priority.textContent = task.priority;
+
+          const dueDate = document.createElement("p");
+          dueDate.textContent = task.dueDate;
+
+          const doneForm = document.createElement("form");
+          const done = document.createElement("input");
+          done.setAttribute("type", "checkbox");
+          done.checked = task.done;
+          doneForm.appendChild(done);
+
+          cardText.appendChild(title);
+          cardText.appendChild(description);
+          cardText.appendChild(priority);
+          cardText.appendChild(dueDate);
+
+          taskCard.appendChild(doneForm);
+          taskCard.appendChild(cardText);
+
+          taskList.appendChild(taskCard);
+        });
+      }
+    });
+  };
+
+  return { printCategory, printTask };
 })();
