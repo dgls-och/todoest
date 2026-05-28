@@ -54,3 +54,23 @@ class Task {
     this.done === false ? (this.done = true) : (this.done = false);
   }
 }
+
+const todoDisplay = (function () {
+  const categoryList = document.querySelector("#categories #category-list");
+  const taskList = document.querySelector("#items #task-list");
+
+  const printCategory = (categoryId) => {
+    const list = todoList.getList();
+    list.forEach((category) => {
+      if (category[0] === categoryId) {
+        const categoryBttn = document.createElement("button");
+        categoryBttn.textContent = category[0];
+        categoryBttn.dataset.id = category[0];
+
+        categoryList.appendChild(categoryBttn);
+      }
+    });
+  };
+
+  return { printCategory };
+})();
