@@ -18,14 +18,45 @@
         <div id="categories">
           <header class="list-header">
             <h2>Projects</h2>
-            <button class="header-btn">New</button>
+            <button command="show-modal" commandfor="proj" class="header-btn">
+              New
+            </button>
+            <dialog id="proj">
+              <form>
+                <input type="text" />
+                <button id="add-proj-bttn">Create project</button>
+              </form>
+            </dialog>
           </header>
           <div id="category-list"></div>
         </div>
         <div id="items">
           <header class="list-header">
             <h2>Tasks</h2>
-            <button class="header-btn">New task</button>
+            <button command="show-modal" commandfor="task" class="header-btn">
+              New task
+            </button>
+            <dialog id="task">
+              <form>
+                <label for="title">Title:</label>
+                <input type="text" id="title" />
+
+                <label for="description">Description:</label>
+                <input type="text" id="description" />
+
+                <label for="priority">Priority</label>
+                <select name="priority" id="priority">
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+
+                <label for="due-date">Date due:</label>
+                <input type="date" name="due-date" id="due-date" />
+
+                <button id="add-task-bttn">Add task</button>
+              </form>
+            </dialog>
           </header>
           <div id="task-list"></div>
         </div>

@@ -109,3 +109,23 @@ h1 {
 .card p:last-of-type {
   margin-bottom: 0;
 }
+
+dialog {
+  margin: auto;
+  border: 0;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(10px);
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
