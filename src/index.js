@@ -104,3 +104,6 @@ const todoDisplay = (function () {
 
   return { printCategory, printTask };
 })();
+
+todoList.addCategory("General");
+todoDisplay.printCategory();
