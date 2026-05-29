@@ -1,58 +1,8 @@
 /** @format */
 
-const todoList = (function () {
-  const list = [];
-
-  const getList = () => list;
-
-  const addCategory = (ctgyName) => {
-    const category = [];
-    category.push(ctgyName);
-    list.push(category);
-  };
-
-  const removeCategory = (ctgyName) => {
-    list.forEach((category) => {
-      if (category[0] === ctgyName) {
-        list.splice(list.indexOf(category), 1);
-      }
-    });
-  };
-
-  const addTask = (ctgyName, task) => {
-    list.forEach((category) => {
-      if (category[0] === ctgyName) {
-        category.push(task);
-      }
-    });
-  };
-
-  const removeTask = (taskTitle) => {
-    list.forEach((category) => {
-      category.forEach((item) => {
-        if (item.title === taskTitle) {
-          category.splice(category.indexOf(item), 1);
-        }
-      });
-    });
-  };
-
-  return { getList, addCategory, addTask, removeCategory, removeTask };
-})();
-
-class Task {
-  constructor(title, description, priority, dueDate, done) {
-    this.title = title;
-    this.description = description;
-    this.priority = priority;
-    this.dueDate = dueDate;
-    this.done = done;
-  }
-
-  isDone() {
-    this.done === false ? (this.done = true) : (this.done = false);
-  }
-}
+import "./style.css";
+import { todoList } from "./todolist.js";
+import { Task } from "./task.js";
 
 const todoDisplay = (function () {
   const categoryList = document.querySelector("#categories #category-list");
