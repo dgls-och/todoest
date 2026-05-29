@@ -7,9 +7,19 @@ const todoList = (function () {
 
   const addCategory = (ctgyName) => {
     newName = ctgyName.toLowerCase().trim();
-    const category = [];
-    category.push(newName);
-    list.push(category);
+    switch (true) {
+      case list.length > 0:
+        list.forEach((item) => {
+          if (item[0] === ctgyName) {
+            return;
+          }
+        });
+        break;
+      default:
+        const category = [];
+        category.push(newName);
+        list.push(category);
+    }
   };
 
   const removeCategory = (ctgyName) => {
@@ -58,6 +68,8 @@ class Task {
 const todoDisplay = (function () {
   const categoryList = document.querySelector("#categories #category-list");
   const taskList = document.querySelector("#items #task-list");
+  //const catsBttn = document.querySelector("#categories button");
+  //const itemsBttn = document.querySelector("#items button");
 
   const printCategory = (categoryId) => {
     const list = todoList.getList();
@@ -66,7 +78,7 @@ const todoDisplay = (function () {
         const categoryBttn = document.createElement("button");
         categoryBttn.textContent = category[0];
         categoryBttn.dataset.id = category[0];
-
+        categoryList.textContent = "";
         categoryList.appendChild(categoryBttn);
       }
     });
