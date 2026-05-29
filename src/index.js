@@ -3,6 +3,7 @@
 import "./style.css";
 import { todoList } from "./todolist.js";
 import { Task } from "./task.js";
+import { format } from "date-fns";
 
 const todoDisplay = (function () {
   const categoryList = document.querySelector("#categories #category-list");
@@ -80,7 +81,7 @@ const todoDisplay = (function () {
           priority.textContent = task.priority;
 
           const dueDate = document.createElement("p");
-          dueDate.textContent = task.dueDate;
+          dueDate.textContent = format(task.dueDate,"eee, MMM do, yyyy");
 
           const doneForm = document.createElement("form");
           const done = document.createElement("input");
