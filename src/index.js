@@ -73,12 +73,38 @@ const todoDisplay = (function () {
     }
   });
 
+  addTaskBttn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const [title, description, dueDate] =
+      document.querySelectorAll("#task input");
+    const priority = document.querySelectorAll("#task selector");
+
+    todoList.addTask(
+      addTaskBttn.dataset.id,
+      new Task(title.value, description.value, priority, dueDate.value, false),
+    );
+    title.value = "";
+    description.value = "";
+    priority.value = "";
+    dueDate.value = "";
+    taskList.textContent = "";
+    printTask(addTaskBttn.dataset.id);
+    document.querySelector("#task").close();
+  });
+
   const printCategory = () => {
     const list = todoList.getList();
     list.forEach((category) => {
       const categoryBttn = document.createElement("button");
       categoryBttn.textContent = category[0];
       categoryBttn.dataset.id = category[0];
+      categoryBttn.addEventListener("click", (e) => {
+        e.preventDefault();
+        addTaskBttn.dataset.id = categoryBttn.dataset.id;
+        document.querySelector("#items header button").disabled = false;
+        taskList.textContent = "";
+        printTask(categoryBttn.dataset.id);
+      });
       categoryList.appendChild(categoryBttn);
     });
   };
