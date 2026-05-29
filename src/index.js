@@ -6,20 +6,9 @@ const todoList = (function () {
   const getList = () => list;
 
   const addCategory = (ctgyName) => {
-    newName = ctgyName.toLowerCase().trim();
-    switch (true) {
-      case list.length > 0:
-        list.forEach((item) => {
-          if (item[0] === ctgyName) {
-            return;
-          }
-        });
-        break;
-      default:
-        const category = [];
-        category.push(newName);
-        list.push(category);
-    }
+    const category = [];
+    category.push(ctgyName);
+    list.push(category);
   };
 
   const removeCategory = (ctgyName) => {
@@ -68,19 +57,29 @@ class Task {
 const todoDisplay = (function () {
   const categoryList = document.querySelector("#categories #category-list");
   const taskList = document.querySelector("#items #task-list");
-  //const catsBttn = document.querySelector("#categories button");
-  //const itemsBttn = document.querySelector("#items button");
+  const addProjectBttn = document.querySelector("#add-proj-bttn");
+  const addTaskBttn = document.querySelector("#add-task-bttn");
 
-  const printCategory = (categoryId) => {
+  addProjectBttn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const input = document.querySelector("#proj input");
+    if (input.value !== "") {
+      const project = input.value;
+      input.value = "";
+      todoList.addCategory(project);
+      categoryList.textContent = "";
+      printCategory();
+      document.querySelector("#proj").close();
+    }
+  });
+
+  const printCategory = () => {
     const list = todoList.getList();
     list.forEach((category) => {
-      if (category[0] === categoryId) {
-        const categoryBttn = document.createElement("button");
-        categoryBttn.textContent = category[0];
-        categoryBttn.dataset.id = category[0];
-        categoryList.textContent = "";
-        categoryList.appendChild(categoryBttn);
-      }
+      const categoryBttn = document.createElement("button");
+      categoryBttn.textContent = category[0];
+      categoryBttn.dataset.id = category[0];
+      categoryList.appendChild(categoryBttn);
     });
   };
 
