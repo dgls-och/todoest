@@ -1,5 +1,3 @@
-/** @format */
-
 export class Task {
   constructor(title, description, priority, dueDate, done) {
     this.title = title;

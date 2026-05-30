@@ -1,5 +1,3 @@
-/** @format */
-
 export const todoList = (function () {
   const list = [];
 
