@@ -2,8 +2,10 @@
 
 import "./style.css";
 import { Task } from "./task.js";
-import { todoList } from "./todolist.js";
+import { TodoList } from "./todolist.js";
 import { format } from "date-fn";
+
+const todoList = new TodoList();
 
 const todoDisplay = (function () {
     const categoryList = document.querySelector("#categories #category-list");
