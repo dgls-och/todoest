@@ -1,39 +1,38 @@
-/*export const todoList = (function () {
-    const list = [];
+export class TodoList {
+    #list = {};
 
-    const getList = () => list;
+    getList() {
+        return { ...this.#list };
+    }
 
-    const addCategory = (ctgyName) => {
-        const category = [];
-        category.push(ctgyName);
-        list.push(category);
-    };
+    addCategory(category) {
+        if (Object.hasOwn(this.#list, category)) {
+            return false;
+        }
+        this.#list[category] = [];
+        return true;
+    }
 
-    const removeCategory = (ctgyName) => {
-        list.forEach((category) => {
-            if (category[0] === ctgyName) {
-                list.splice(list.indexOf(category), 1);
+    removeCategory(category) {
+        for (let item in this.#list) {
+            if (item === category) delete this.#list[category];
+        }
+    }
+
+    addTask(category, task) {
+        for (let item in this.#list) {
+            if (item === category) {
+                this.#list[category].push(task);
+            }
+        }
+    }
+
+    removeTask(category, taskTitle) {
+        const array = this.#list[category];
+        array.forEach((task) => {
+            if (task.title === taskTitle) {
+                array.splice(array.indexOf(task), 1);
             }
         });
-    };
-
-    const addTask = (ctgyName, task) => {
-        list.forEach((category) => {
-            if (category[0] === ctgyName) {
-                category.push(task);
-            }
-        });
-    };
-
-    const removeTask = (taskTitle) => {
-        list.forEach((category) => {
-            category.forEach((item) => {
-                if (item.title === taskTitle) {
-                    category.splice(category.indexOf(item), 1);
-                }
-            });
-        });
-    };
-
-    return { getList, addCategory, addTask, removeCategory, removeTask };
-})();*/
+    }
+}
