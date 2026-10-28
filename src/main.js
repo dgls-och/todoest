@@ -3,7 +3,7 @@
 import "./style.css";
 import { Task } from "./task.js";
 import { todoList } from "./todolist.js";
-import { format } from "date-fns";
+import { format } from "date-fn";
 
 const todoDisplay = (function () {
     const categoryList = document.querySelector("#categories #category-list");
@@ -75,6 +75,7 @@ const todoDisplay = (function () {
                 const tasks = category.slice(1);
                 tasks.forEach((task) => {
                     const taskCard = document.createElement("div");
+                    taskCard.classList.add(`priority-${task.priority}`);
                     taskCard.classList.add("card");
 
                     const cardText = document.createElement("div");
